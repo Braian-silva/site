@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Club Estética Animal</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ======== RESET ======== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fffaf7;
+  color: #333;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ======== PARTICULAS HEADER ======== */
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  animation: rise 10s linear infinite;
+}
+
+@keyframes rise {
+  0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* ======== HEADER ======== */
+header {
+  background: linear-gradient(135deg, #ff6b81, #ff9f43);
+  color: white;
+  text-align: center;
+  padding: 140px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+header h1 {
+  font-size: 3em;
+  font-weight: 700;
+  z-index: 1;
+  position: relative;
+}
+
+header p {
+  font-size: 1.3em;
+  margin-top: 15px;
+  z-index: 1;
+  position: relative;
+}
+
+.btn {
+  display: inline-block;
+  background: white;
+  color: #ff6b81;
+  padding: 15px 35px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  margin-top: 25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 1;
+  position: relative;
+}
+.btn:hover {
+  background: #ff6b81;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* ======== SECTIONS ======== */
+section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: auto;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+  transform: translateY(50px);
+}
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.5em;
+  color: #ff6b81;
+  margin-bottom: 40px;
+  position: relative;
+}
+h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #ff9f43;
+  margin: 10px auto;
+  border-radius: 4px;
+}
+
+/* ======== CARDS ======== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+.card h3 {
+  color: #ff6b81;
+  margin-bottom: 15px;
+}
+.card p {
+  font-size: 1em;
+}
+
+/* ======== DIFERENCIAIS ======== */
+#diferenciais {
+  background: linear-gradient(135deg, #fff1f1, #ffe7c8);
+  border-radius: 20px;
+}
+.diferenciais ul {
+  list-style: none;
+  max-width: 700px;
+  margin: auto;
+}
+.diferenciais li {
+  font-size: 1.2em;
+  margin: 15px 0;
+  position: relative;
+  padding-left: 35px;
+}
+.diferenciais li::before {
+  content: '🐾';
+  position: absolute;
+  left: 0;
+  font-size: 1.4em;
+}
+
+/* ======== DEPOIMENTOS ======== */
+.depoimentos {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.depoimento {
+  background: #fff0f0;
+  border-radius: 20px;
+  padding: 25px;
+  font-style: italic;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+.depoimento:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* ======== CONTATO ======== */
+#contato {
+  text-align: center;
+  background: linear-gradient(135deg, #ff6b81, #ff9f43);
+  color: white;
+  border-radius: 20px;
+  padding: 80px 20px;
+}
+#contato p {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+/* ======== FORMULÁRIO CADASTRO ======== */
+form {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 600px;
+  margin: 30px auto;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+form h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ff6b81;
+}
+form input, form select, form button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+}
+form button {
+  background: #ff6b81;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+form button:hover {
+  background: #ff9f43;
+  transform: scale(1.05);
+}
+
+/* ======== WHATSAPP FLUTUANTE ======== */
+#whatsapp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #25D366;
+  color: white;
+  border-radius: 50%;
+  padding: 15px 18px;
+  font-size: 28px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  z-index: 100;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* ======== FOOTER ======== */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: white;
+  background-color: #ff6b81;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* ======== RESPONSIVE ======== */
+@media(max-width:768px) {
+  header h1 { font-size: 2.2em; }
+  header p { font-size: 1.1em; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<header>
+  <h1>🐾 Pet Club Estética Animal 🐾</h1>
+  <p>Onde o amor e o cuidado se encontram para deixar seu pet ainda mais feliz!</p>
+  <a href="#contato" class="btn">Agende Agora</a>
+</header>
+
+<section id="sobre">
+  <h2>Sobre Nós</h2>
+  <p>Na Pet Club Estética Animal, oferecemos uma experiência premium de beleza, diversão e carinho para o seu pet. Nosso espaço é livre de gaiolas, com ambientes climatizados, brinquedos, música e profissionais apaixonados por animais!</p>
+</section>
+
+<section id="servicos">
+  <h2>💅 Nossos Serviços</h2>
+  <div class="cards">
+    <div class="card"><h3>Banho & Spa Premium</h3><p>Com produtos hipoalergênicos e ambiente relaxante, o seu pet sai perfumado e feliz!</p></div>
+    <div class="card"><h3>Tosa Fashion</h3><p>Estilos modernos e confortáveis feitos com todo o cuidado que seu pet merece.</p></div>
+    <div class="card"><h3>Creche & Diversão</h3><p>Socialização, brincadeiras e descanso garantido em um espaço livre e seguro.</p></div>
+    <div class="card"><h3>Hidratações Especiais</h3><p>Tratamentos com óleos naturais e ozonioterapia para pelagem saudável.</p></div>
+  </div>
+</section>
+
+<section id="diferenciais">
+  <h2>✨ Nossos Diferenciais</h2>
+  <div class="diferenciais">
+    <ul>
+      <li>Ambiente 100% livre de gaiolas</li>
+      <li>Equipe treinada e apaixonada por pets</li>
+      <li>Produtos premium e hipoalergênicos</li>
+      <li>Mais de 3.000 pets atendidos com amor 💖</li>
+    </ul>
+  </div>
+</section>
+
+<section id="depoimentos">
+  <h2>🐕 O que dizem nossos clientes</h2>
+  <div class="depoimentos">
+    <div class="depoimento">“Meu cachorro saiu tão feliz que não queria ir embora! Atendimento impecável.”</div>
+    <div class="depoimento">“Ambiente limpo, alegre e cheio de amor! Super recomendo.”</div>
+    <div class="depoimento">“Finalmente um lugar que entende o que os pets precisam. Perfeito!”</div>
+  </div>
+</section>
+
+<section id="cadastro">
+  <h2>📋 Cadastre seu Pet</h2>
+  <form>
+    <h3>Cadastro de Cliente e Pet</h3>
+    <input type="text" placeholder="Nome do Cliente" required>
+    <input type="email" placeholder="E-mail" required>
+    <input type="text" placeholder="Telefone/WhatsApp" required>
+    <input type="text" placeholder="Nome do Pet" required>
+    <select required>
+      <option value="">Selecione o Tipo de Pet</option>
+      <option>Cachorro</option>
+      <option>Gato</option>
+      <option>Outro</option>
+    </select>
+    <button type="submit">Cadastrar</button>
+  </form>
+</section>
+
+<section id="contato">
+  <h2>📞 Contato</h2>
+  <p>Telefone/WhatsApp: <a href="https://wa.me/5567998121012" style="color:white;">67 99812-1012</a></p>
+  <p>E-mail: contato@petclubesteticaanimal.com.br</p>
+  <p>Endereço: Rua Aquidauana, 122</p>
+  <a href="mailto:contato@petclubesteticaanimal.com.br" class="btn">Enviar Mensagem</a>
+</section>
+
+<footer>
+  Pet Club Estética Animal © 2025 | Criado  por Fantasminha Dev
+</footer>
+
+<!-- ======== BOTÃO WHATSAPP ======== -->
+<a id="whatsapp" href="https://wa.me/5567998121012" target="_blank">📱</a>
+
+<script>
+// Partículas
+for(let i=0; i<50; i++){
+  let particle = document.createElement('div');
+  particle.classList.add('particle');
+  particle.style.left = Math.random()*100 + "vw";
+  particle.style.width = particle.style.height = Math.random()*8+5 + "px";
+  particle.style.animationDuration = (Math.random()*5 + 5) + "s";
+  document.getElementById('particles').appendChild(particle);
+}
+
+// Scroll Animations
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', () => {
+  let scrollY = window.scrollY + window.innerHeight - 100;
+  sections.forEach(section => {
+    if(scrollY > section.offsetTop){
+      section.classList.add('visible');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
